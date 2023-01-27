@@ -8,7 +8,7 @@
             "read": true,
             "write": true,
             "insert": true,
-            "delete": true,
+            "delete": false,
             "search": true
         }
     ]
