@@ -1,0 +1,61 @@
+{
+    "properties": {
+        "_id": {
+            "bsonType": "objectId"
+        },
+        "cAt": {
+            "bsonType": "date"
+        },
+        "flights": {
+            "bsonType": "array",
+            "items": {
+                "bsonType": "object",
+                "properties": {
+                    "marketingFlightId": {
+                        "bsonType": "object",
+                        "properties": {
+                            "carrier": {
+                                "bsonType": "string"
+                            },
+                            "flightNo": {
+                                "bsonType": "string"
+                            }
+                        }
+                    },
+                    "operatingFlightId": {
+                        "bsonType": "object",
+                        "properties": {
+                            "carrier": {
+                                "bsonType": "string"
+                            },
+                            "flightNo": {
+                                "bsonType": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "passengers": {
+            "bsonType": "array",
+            "items": {
+                "bsonType": "object",
+                "properties": {
+                    "firstName": {
+                        "bsonType": "string"
+                    },
+                    "lastName": {
+                        "bsonType": "string"
+                    }
+                }
+            }
+        },
+        "rloc": {
+            "bsonType": "string"
+        },
+        "version": {
+            "bsonType": "int"
+        }
+    },
+    "title": "booking"
+}
