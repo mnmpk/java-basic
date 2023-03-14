@@ -1,0 +1,1421 @@
+{
+    "properties": {
+        "_id": {
+            "bsonType": "objectId"
+        },
+        "activePNRimage": {
+            "bsonType": "object",
+            "properties": {
+                "amadeusId": {
+                    "bsonType": "object",
+                    "properties": {
+                        "reservation": {
+                            "bsonType": "object",
+                            "properties": {
+                                "controlNumber": {
+                                    "bsonType": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "dataElementsMaster": {
+                    "bsonType": "object",
+                    "properties": {
+                        "dataElementsIndiv": {
+                            "bsonType": "array",
+                            "items": {
+                                "bsonType": "object",
+                                "properties": {
+                                    "elementManagementData": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "elementReference": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "number": {
+                                                        "bsonType": "int"
+                                                    },
+                                                    "qualifier": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            },
+                                            "segmentName": {
+                                                "bsonType": "string"
+                                            }
+                                        }
+                                    },
+                                    "frequentTravellerInfo": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "frequentTravellerDetails": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "carrier": {
+                                                        "bsonType": "string"
+                                                    },
+                                                    "number": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            },
+                                            "otherFrequentTravellerDetails": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "carrier": {
+                                                        "bsonType": "string"
+                                                    },
+                                                    "companyCode": {
+                                                        "bsonType": "string"
+                                                    },
+                                                    "number": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "frequentTravellerVerif": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "accountDetails": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "frequentTravellerId": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            },
+                                            "actionRequest": {
+                                                "bsonType": "string"
+                                            }
+                                        }
+                                    },
+                                    "otherDataFreetext": {
+                                        "bsonType": "array",
+                                        "items": {
+                                            "bsonType": "object",
+                                            "properties": {
+                                                "freetextDetail": {
+                                                    "bsonType": "object",
+                                                    "properties": {
+                                                        "subjectQualifier": {
+                                                            "bsonType": "string"
+                                                        },
+                                                        "type": {
+                                                            "bsonType": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "longFreetext": {
+                                                    "bsonType": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "referenceForDataElement": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "reference": {
+                                                "bsonType": "array",
+                                                "items": {
+                                                    "bsonType": "object",
+                                                    "properties": {
+                                                        "number": {
+                                                            "bsonType": "string"
+                                                        },
+                                                        "qualifier": {
+                                                            "bsonType": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "serviceRequest": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "ssr": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "companyId": {
+                                                        "bsonType": "string"
+                                                    },
+                                                    "status": {
+                                                        "bsonType": "string"
+                                                    },
+                                                    "type": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "ssrIndicator": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "statusInformation": {
+                                                "bsonType": "array",
+                                                "items": {
+                                                    "bsonType": "object",
+                                                    "properties": {
+                                                        "action": {
+                                                            "bsonType": "string"
+                                                        },
+                                                        "indicator": {
+                                                            "bsonType": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "dataElementsStruct": {
+                            "bsonType": "array",
+                            "items": {
+                                "bsonType": "object",
+                                "properties": {
+                                    "elementManagementStructData": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "elementReference": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "number": {
+                                                        "bsonType": "int"
+                                                    },
+                                                    "qualifier": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            },
+                                            "segmentName": {
+                                                "bsonType": "string"
+                                            }
+                                        }
+                                    },
+                                    "fopGroup": {
+                                        "bsonType": "array",
+                                        "items": {
+                                            "bsonType": "object",
+                                            "properties": {
+                                                "fopFreeflow": {
+                                                    "bsonType": "object",
+                                                    "properties": {
+                                                        "freeText": {
+                                                            "bsonType": "string"
+                                                        },
+                                                        "freeTextDetails": {
+                                                            "bsonType": "object",
+                                                            "properties": {
+                                                                "encoding": {
+                                                                    "bsonType": "string"
+                                                                },
+                                                                "source": {
+                                                                    "bsonType": "string"
+                                                                },
+                                                                "textSubjectQualifier": {
+                                                                    "bsonType": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "fopPNRDetails": {
+                                                    "bsonType": "object",
+                                                    "properties": {
+                                                        "fopDetails": {
+                                                            "bsonType": "array",
+                                                            "items": {
+                                                                "bsonType": "object",
+                                                                "properties": {
+                                                                    "fopCode": {
+                                                                        "bsonType": "string"
+                                                                    },
+                                                                    "fopStatus": {
+                                                                        "bsonType": "string"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "fopSequenceNumber": {
+                                                    "bsonType": "object",
+                                                    "properties": {
+                                                        "sequenceDetails": {
+                                                            "bsonType": "object",
+                                                            "properties": {
+                                                                "number": {
+                                                                    "bsonType": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "paymentModule": {
+                                                    "bsonType": "object",
+                                                    "properties": {
+                                                        "dummy": {
+                                                            "bsonType": "object",
+                                                            "properties": {}
+                                                        },
+                                                        "groupUsage": {
+                                                            "bsonType": "object",
+                                                            "properties": {
+                                                                "attributeDetails": {
+                                                                    "bsonType": "object",
+                                                                    "properties": {
+                                                                        "attributeType": {
+                                                                            "bsonType": "string"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "paymentData": {
+                                                            "bsonType": "object",
+                                                            "properties": {
+                                                                "merchantInformation": {
+                                                                    "bsonType": "object",
+                                                                    "properties": {
+                                                                        "companyCode": {
+                                                                            "bsonType": "string"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "transactionDateTime": {
+                                                                    "bsonType": "object",
+                                                                    "properties": {
+                                                                        "businessSemantic": {
+                                                                            "bsonType": "string"
+                                                                        },
+                                                                        "dateTime": {
+                                                                            "bsonType": "object",
+                                                                            "properties": {
+                                                                                "day": {
+                                                                                    "bsonType": "int"
+                                                                                },
+                                                                                "hour": {
+                                                                                    "bsonType": "int"
+                                                                                },
+                                                                                "minutes": {
+                                                                                    "bsonType": "int"
+                                                                                },
+                                                                                "month": {
+                                                                                    "bsonType": "int"
+                                                                                },
+                                                                                "seconds": {
+                                                                                    "bsonType": "int"
+                                                                                },
+                                                                                "year": {
+                                                                                    "bsonType": "string"
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "pnrSupplementaryData": {
+                                                    "bsonType": "array",
+                                                    "items": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "dataAndSwitchMap": {
+                                                                "bsonType": "object",
+                                                                "properties": {
+                                                                    "criteriaDetails": {
+                                                                        "bsonType": "array",
+                                                                        "items": {
+                                                                            "bsonType": "object",
+                                                                            "properties": {
+                                                                                "attributeDescription": {
+                                                                                    "bsonType": "string"
+                                                                                },
+                                                                                "attributeType": {
+                                                                                    "bsonType": "string"
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "criteriaSetType": {
+                                                                        "bsonType": "string"
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "idElements": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "idsValue": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "idSection": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "primeId": {
+                                                                "bsonType": "string"
+                                                            },
+                                                            "referenceQualifier": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "infantOrAdultAssociation": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "paxDetails": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "type": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "referenceForStructDataElement": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "reference": {
+                                                "bsonType": "array",
+                                                "items": {
+                                                    "bsonType": "object",
+                                                    "properties": {
+                                                        "number": {
+                                                            "bsonType": "string"
+                                                        },
+                                                        "qualifier": {
+                                                            "bsonType": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "ticketDocumentData": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "couponsInfo": {
+                                                "bsonType": "array",
+                                                "items": {
+                                                    "bsonType": "object",
+                                                    "properties": {
+                                                        "couponDetails": {
+                                                            "bsonType": "object",
+                                                            "properties": {
+                                                                "cpnNumber": {
+                                                                    "bsonType": "int"
+                                                                },
+                                                                "cpnSequenceNumber": {
+                                                                    "bsonType": "int"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "fareInformation": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "monetaryDetails": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "amount": {
+                                                                "bsonType": "string"
+                                                            },
+                                                            "currency": {
+                                                                "bsonType": "string"
+                                                            },
+                                                            "typeQualifier": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "infantOrAdultAssociation": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "paxDetails": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "type": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "numAirlineCode": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "companyIdentification": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "otherCompany": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "officeInfo": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "originatorDetails": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "inHouseIdentification1": {
+                                                                "bsonType": "string"
+                                                            },
+                                                            "inHouseIdentification2": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "systemCode": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            },
+                                            "ticketingDate": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "dateTime": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "day": {
+                                                                "bsonType": "int"
+                                                            },
+                                                            "month": {
+                                                                "bsonType": "int"
+                                                            },
+                                                            "year": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "tktNumber": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "documentDetails": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "dataIndicator": {
+                                                                "bsonType": "string"
+                                                            },
+                                                            "number": {
+                                                                "bsonType": "int"
+                                                            },
+                                                            "requestNotification": {
+                                                                "bsonType": "string"
+                                                            },
+                                                            "type": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "status": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "originDestinationDetails": {
+                    "bsonType": "object",
+                    "properties": {
+                        "itineraryInfo": {
+                            "bsonType": "array",
+                            "items": {
+                                "bsonType": "object",
+                                "properties": {
+                                    "bookingCreationDate": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "dateAndTimeDetails": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "date": {
+                                                        "bsonType": "string"
+                                                    },
+                                                    "qualifier": {
+                                                        "bsonType": "string"
+                                                    },
+                                                    "time": {
+                                                        "bsonType": "int"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "codeSharePartnerInfo": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "codeShareDetails": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "codeShareAgreement": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            },
+                                            "codeSharePartner": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "boardPointDetails": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "trueLocationId": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "companyDetails": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "carrierCode": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "flightIdentification": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "bookingClass": {
+                                                                "bsonType": "string"
+                                                            },
+                                                            "flightNumber": {
+                                                                "bsonType": "int"
+                                                            }
+                                                        }
+                                                    },
+                                                    "flightTypeDetails": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "flightIndicator": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "offpointDetails": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "trueLocationId": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "codeSharePartnerInventoryData": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "cabinInformation": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "cabinCode": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "subClassClassification": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "countryCode": {
+                                                                "bsonType": "string"
+                                                            },
+                                                            "sourceType": {
+                                                                "bsonType": "object",
+                                                                "properties": {
+                                                                    "sourceQualifier1": {
+                                                                        "bsonType": "string"
+                                                                    }
+                                                                }
+                                                            },
+                                                            "systemCode": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "subClassInformation": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "subclassId": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "codeSharePartnerYieldData": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "ondyield": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "destination": {
+                                                                "bsonType": "string"
+                                                            },
+                                                            "origin": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "pointOfCommencement": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "location": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "yieldInformations": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "monetaryDetails": {
+                                                                "bsonType": "object",
+                                                                "properties": {
+                                                                    "amount": {
+                                                                        "bsonType": "int"
+                                                                    },
+                                                                    "typeQualifier": {
+                                                                        "bsonType": "string"
+                                                                    }
+                                                                }
+                                                            },
+                                                            "otherMonetaryDetails": {
+                                                                "bsonType": "array",
+                                                                "items": {
+                                                                    "bsonType": "object",
+                                                                    "properties": {
+                                                                        "amount": {
+                                                                            "bsonType": "int"
+                                                                        },
+                                                                        "typeQualifier": {
+                                                                            "bsonType": "string"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "elementManagementItinerary": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "elementReference": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "number": {
+                                                        "bsonType": "int"
+                                                    },
+                                                    "qualifier": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            },
+                                            "segmentName": {
+                                                "bsonType": "string"
+                                            }
+                                        }
+                                    },
+                                    "flightDetail": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "arrivalInformation": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "arrivalTerminal": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            },
+                                            "departureInformation": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "departTerminal": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            },
+                                            "productDetails": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "equipment": {
+                                                        "bsonType": "string"
+                                                    },
+                                                    "numOfStops": {
+                                                        "bsonType": "int"
+                                                    },
+                                                    "weekDay": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "itineraryFreetext": {
+                                        "bsonType": "array",
+                                        "items": {
+                                            "bsonType": "object",
+                                            "properties": {
+                                                "freetextDetail": {
+                                                    "bsonType": "object",
+                                                    "properties": {
+                                                        "subjectQualifier": {
+                                                            "bsonType": "string"
+                                                        },
+                                                        "type": {
+                                                            "bsonType": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "longFreetext": {
+                                                    "bsonType": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "itineraryReservationInfo": {
+                                        "bsonType": "array",
+                                        "items": {
+                                            "bsonType": "object",
+                                            "properties": {
+                                                "reservation": {
+                                                    "bsonType": "object",
+                                                    "properties": {
+                                                        "companyId": {
+                                                            "bsonType": "string"
+                                                        },
+                                                        "controlNumber": {
+                                                            "bsonType": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "messageAction": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "business": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "function": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "originalStatusCode": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "status": {
+                                                "bsonType": "array",
+                                                "items": {
+                                                    "bsonType": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "relatedProduct": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "quantity": {
+                                                "bsonType": "int"
+                                            },
+                                            "status": {
+                                                "bsonType": "array",
+                                                "items": {
+                                                    "bsonType": "string"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "selectionDetails": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "selection": {
+                                                "bsonType": "array",
+                                                "items": {
+                                                    "bsonType": "object",
+                                                    "properties": {
+                                                        "option": {
+                                                            "bsonType": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "travelProduct": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "boardpointDetail": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "cityCode": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            },
+                                            "companyDetail": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "identification": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            },
+                                            "offpointDetail": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "cityCode": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            },
+                                            "product": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "arrDate": {
+                                                        "bsonType": "string"
+                                                    },
+                                                    "arrTime": {
+                                                        "bsonType": "string"
+                                                    },
+                                                    "dayChangeIndicator": {
+                                                        "bsonType": "string"
+                                                    },
+                                                    "depDate": {
+                                                        "bsonType": "string"
+                                                    },
+                                                    "depTime": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            },
+                                            "productDetails": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "classOfService": {
+                                                        "bsonType": "string"
+                                                    },
+                                                    "identification": {
+                                                        "bsonType": "string"
+                                                    }
+                                                }
+                                            },
+                                            "typeDetail": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "detail": {
+                                                        "bsonType": "array",
+                                                        "items": {
+                                                            "bsonType": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "originDestination": {
+                            "bsonType": "object",
+                            "properties": {}
+                        }
+                    }
+                },
+                "pnrHeader": {
+                    "bsonType": "object",
+                    "properties": {
+                        "creditLine": {
+                            "bsonType": "object",
+                            "properties": {
+                                "officeData": {
+                                    "bsonType": "array",
+                                    "items": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "agentCode": {
+                                                "bsonType": "string"
+                                            },
+                                            "officeId": {
+                                                "bsonType": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "receiveFrom": {
+                                    "bsonType": "string"
+                                }
+                            }
+                        },
+                        "reservationInfo": {
+                            "bsonType": "array",
+                            "items": {
+                                "bsonType": "object",
+                                "properties": {
+                                    "reservation": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "companyId": {
+                                                "bsonType": "string"
+                                            },
+                                            "controlNumber": {
+                                                "bsonType": "string"
+                                            },
+                                            "controlType": {
+                                                "bsonType": "string"
+                                            },
+                                            "date": {
+                                                "bsonType": "string"
+                                            },
+                                            "time": {
+                                                "bsonType": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "securityInformation": {
+                            "bsonType": "array",
+                            "items": {
+                                "bsonType": "object",
+                                "properties": {
+                                    "queueingInformation": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "queueingOfficeId": {
+                                                "bsonType": "string"
+                                            }
+                                        }
+                                    },
+                                    "responsibilityInformation": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "agentId": {
+                                                "bsonType": "string"
+                                            },
+                                            "iataCode": {
+                                                "bsonType": "int"
+                                            },
+                                            "officeId": {
+                                                "bsonType": "string"
+                                            },
+                                            "typeOfPnrElement": {
+                                                "bsonType": "string"
+                                            }
+                                        }
+                                    },
+                                    "secondRpInformation": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "agentSignature": {
+                                                "bsonType": "string"
+                                            },
+                                            "creationDate": {
+                                                "bsonType": "string"
+                                            },
+                                            "creationOfficeId": {
+                                                "bsonType": "string"
+                                            },
+                                            "creationTime": {
+                                                "bsonType": "string"
+                                            },
+                                            "creatorIataCode": {
+                                                "bsonType": "int"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "technicalData": {
+                            "bsonType": "object",
+                            "properties": {
+                                "number": {
+                                    "bsonType": "int"
+                                },
+                                "pnrPurgeDate": {
+                                    "bsonType": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "pricingRecordGroup": {
+                    "bsonType": "object",
+                    "properties": {
+                        "productPricingQuotationRecord": {
+                            "bsonType": "array",
+                            "items": {
+                                "bsonType": "object",
+                                "properties": {
+                                    "documentDetailsGroup": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "couponDetailsGroup": {
+                                                "bsonType": "array",
+                                                "items": {
+                                                    "bsonType": "object",
+                                                    "properties": {
+                                                        "baggageInformation": {
+                                                            "bsonType": "object",
+                                                            "properties": {
+                                                                "baggageDetails": {
+                                                                    "bsonType": "object",
+                                                                    "properties": {
+                                                                        "freeAllowance": {
+                                                                            "bsonType": "int"
+                                                                        },
+                                                                        "quantityCode": {
+                                                                            "bsonType": "string"
+                                                                        },
+                                                                        "unitQualifier": {
+                                                                            "bsonType": "string"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "flightConnectionType": {
+                                                            "bsonType": "object",
+                                                            "properties": {
+                                                                "flightTypeDetails": {
+                                                                    "bsonType": "object",
+                                                                    "properties": {
+                                                                        "flightIndicator": {
+                                                                            "bsonType": "string"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "productId": {
+                                                            "bsonType": "object",
+                                                            "properties": {
+                                                                "referenceDetails": {
+                                                                    "bsonType": "object",
+                                                                    "properties": {
+                                                                        "type": {
+                                                                            "bsonType": "string"
+                                                                        },
+                                                                        "value": {
+                                                                            "bsonType": "string"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "totalFare": {
+                                                "bsonType": "object",
+                                                "properties": {
+                                                    "monetaryDetails": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "amount": {
+                                                                "bsonType": "string"
+                                                            },
+                                                            "currency": {
+                                                                "bsonType": "string"
+                                                            },
+                                                            "typeQualifier": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "travellerInfo": {
+                    "bsonType": "array",
+                    "items": {
+                        "bsonType": "object",
+                        "properties": {
+                            "elementManagementPassenger": {
+                                "bsonType": "object",
+                                "properties": {
+                                    "elementReference": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "number": {
+                                                "bsonType": "int"
+                                            },
+                                            "qualifier": {
+                                                "bsonType": "string"
+                                            }
+                                        }
+                                    },
+                                    "segmentName": {
+                                        "bsonType": "string"
+                                    }
+                                }
+                            },
+                            "passengerData": {
+                                "bsonType": "array",
+                                "items": {
+                                    "bsonType": "object",
+                                    "properties": {
+                                        "travellerInformation": {
+                                            "bsonType": "object",
+                                            "properties": {
+                                                "passenger": {
+                                                    "bsonType": "array",
+                                                    "items": {
+                                                        "bsonType": "object",
+                                                        "properties": {
+                                                            "firstName": {
+                                                                "bsonType": "string"
+                                                            },
+                                                            "type": {
+                                                                "bsonType": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "traveller": {
+                                                    "bsonType": "object",
+                                                    "properties": {
+                                                        "quantity": {
+                                                            "bsonType": "int"
+                                                        },
+                                                        "surname": {
+                                                            "bsonType": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "activityReport": {
+            "bsonType": "array",
+            "items": {
+                "bsonType": "object",
+                "properties": {
+                    "action": {
+                        "bsonType": "object",
+                        "properties": {
+                            "actionRequestCode": {
+                                "bsonType": "string"
+                            }
+                        }
+                    },
+                    "activityId": {
+                        "bsonType": "object",
+                        "properties": {
+                            "referenceType": {
+                                "bsonType": "string"
+                            }
+                        }
+                    },
+                    "activityReference": {
+                        "bsonType": "object",
+                        "properties": {
+                            "elementReference": {
+                                "bsonType": "object",
+                                "properties": {
+                                    "number": {
+                                        "bsonType": "int"
+                                    },
+                                    "qualifier": {
+                                        "bsonType": "string"
+                                    }
+                                }
+                            },
+                            "segmentName": {
+                                "bsonType": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "deadPNRimage": {
+            "bsonType": "object",
+            "properties": {
+                "amadeusId": {
+                    "bsonType": "object",
+                    "properties": {
+                        "reservation": {
+                            "bsonType": "object",
+                            "properties": {
+                                "controlNumber": {
+                                    "bsonType": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "pnrHeader": {
+                    "bsonType": "object",
+                    "properties": {
+                        "creditLine": {
+                            "bsonType": "object",
+                            "properties": {
+                                "officeData": {
+                                    "bsonType": "array",
+                                    "items": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "agentCode": {
+                                                "bsonType": "string"
+                                            },
+                                            "officeId": {
+                                                "bsonType": "string"
+                                            }
+                                        }
+                                    }
+                                },
+                                "receiveFrom": {
+                                    "bsonType": "string"
+                                }
+                            }
+                        },
+                        "reservationInfo": {
+                            "bsonType": "array",
+                            "items": {
+                                "bsonType": "object",
+                                "properties": {
+                                    "reservation": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "companyId": {
+                                                "bsonType": "string"
+                                            },
+                                            "controlNumber": {
+                                                "bsonType": "string"
+                                            },
+                                            "controlType": {
+                                                "bsonType": "string"
+                                            },
+                                            "date": {
+                                                "bsonType": "string"
+                                            },
+                                            "time": {
+                                                "bsonType": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "securityInformation": {
+                            "bsonType": "array",
+                            "items": {
+                                "bsonType": "object",
+                                "properties": {
+                                    "queueingInformation": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "queueingOfficeId": {
+                                                "bsonType": "string"
+                                            }
+                                        }
+                                    },
+                                    "responsibilityInformation": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "agentId": {
+                                                "bsonType": "string"
+                                            },
+                                            "iataCode": {
+                                                "bsonType": "int"
+                                            },
+                                            "officeId": {
+                                                "bsonType": "string"
+                                            },
+                                            "typeOfPnrElement": {
+                                                "bsonType": "string"
+                                            }
+                                        }
+                                    },
+                                    "secondRpInformation": {
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "agentSignature": {
+                                                "bsonType": "string"
+                                            },
+                                            "creationDate": {
+                                                "bsonType": "string"
+                                            },
+                                            "creationOfficeId": {
+                                                "bsonType": "string"
+                                            },
+                                            "creationTime": {
+                                                "bsonType": "string"
+                                            },
+                                            "creatorIataCode": {
+                                                "bsonType": "int"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "technicalData": {
+                            "bsonType": "object",
+                            "properties": {
+                                "number": {
+                                    "bsonType": "int"
+                                },
+                                "pnrPurgeDate": {
+                                    "bsonType": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "title": "sbr"
+}
