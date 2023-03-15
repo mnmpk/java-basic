@@ -1,0 +1,47 @@
+{
+    "properties": {
+        "_class": {
+            "bsonType": "string"
+        },
+        "_id": {
+            "bsonType": "objectId"
+        },
+        "arrival": {
+            "bsonType": "object",
+            "properties": {
+                "code": {
+                    "bsonType": "string"
+                },
+                "datetime": {
+                    "bsonType": "date"
+                },
+                "timezone": {
+                    "bsonType": "string"
+                }
+            }
+        },
+        "departure": {
+            "bsonType": "object",
+            "properties": {
+                "code": {
+                    "bsonType": "string"
+                },
+                "datetime": {
+                    "bsonType": "date"
+                },
+                "timezone": {
+                    "bsonType": "string"
+                }
+            }
+        },
+        "operatingFlightId": {
+            "bsonType": "object",
+            "properties": {
+                "flightNo": {
+                    "bsonType": "string"
+                }
+            }
+        }
+    },
+    "title": "flight"
+}
