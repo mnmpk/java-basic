@@ -1,5 +1,6 @@
 package com.mongodb.javabasic.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +13,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,6 +28,7 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.result.InsertOneResult;
 import com.mongodb.javabasic.model.Movie;
 import com.mongodb.javabasic.model.Person;
+import com.mongodb.javabasic.repositories.MovieRepository;
 import com.mongodb.javabasic.repositories.PersonRepository;
 
 @RestController
@@ -51,6 +54,10 @@ public class ApplicationController {
 
     @Autowired
     PersonRepository repository;
+    @Autowired
+    MovieRepository movieRepository;
+    @Autowired
+    ConversionService conversionService;
 
     @GetMapping("/self-create-client")
     public Document selfCreateClient() {
@@ -99,7 +106,7 @@ public class ApplicationController {
     @GetMapping("/insert-movie")
     public InsertOneResult insertMovie() {
         MongoDatabase database = mongoClient.getDatabase(databaseName).withCodecRegistry(pojoCodecRegistry);
-        MongoCollection<Movie> collection = database.getCollection("person", Movie.class);
+        MongoCollection<Movie> collection = database.getCollection("movies", Movie.class);
         Movie movie = new Movie();
         //movie.setId(new ObjectId());
         movie.setPlot("Plot");
@@ -130,6 +137,14 @@ public class ApplicationController {
         person.setFirstname("M");
         person.setLastname("MA");
         return repository.insert(person);
+    }
+    @GetMapping("/spring-insert-movie")
+    public Movie springInsertMovie() {
+        Movie movie = new Movie();
+        movie.setPlot("Plot");
+        movie.setTitle("Title");
+        movie.setStartAt(LocalDateTime.now());
+        return movieRepository.insert(movie);
     }
 
     @GetMapping("/spring-find-all")

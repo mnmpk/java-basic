@@ -1,5 +1,6 @@
 package com.mongodb.javabasic.model;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.bson.types.ObjectId;
@@ -12,4 +13,5 @@ public class Movie {
     String plot;
     List<String> genres;
     String title;
+    LocalDateTime startAt;
 }
