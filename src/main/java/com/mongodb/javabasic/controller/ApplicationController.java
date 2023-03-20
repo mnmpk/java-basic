@@ -151,6 +151,10 @@ public class ApplicationController {
     public List<Person> springFindAll() {
         return repository.findAll();
     }
+    @GetMapping("/spring-find-all-movie")
+    public List<Movie> springFindAllMovie() {
+        return movieRepository.findAll();
+    }
 
     @GetMapping("/find-all")
     public List<Person> findAll() {
