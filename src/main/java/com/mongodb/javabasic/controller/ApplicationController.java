@@ -3,6 +3,7 @@ package com.mongodb.javabasic.controller;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import org.bson.Document;
@@ -10,7 +11,6 @@ import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.convert.ConversionService;
@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.AggregateIterable;
-import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
@@ -103,17 +102,6 @@ public class ApplicationController {
         return collection.insertOne(person);
     }
 
-    @GetMapping("/insert-movie")
-    public InsertOneResult insertMovie() {
-        MongoDatabase database = mongoClient.getDatabase(databaseName).withCodecRegistry(pojoCodecRegistry);
-        MongoCollection<Movie> collection = database.getCollection("movies", Movie.class);
-        Movie movie = new Movie();
-        //movie.setId(new ObjectId());
-        movie.setPlot("Plot");
-        movie.setTitle("Title");
-
-        return collection.insertOne(movie);
-    }
 
     @GetMapping("/spring-create-client")
     public Document springCreateClient() {
@@ -138,22 +126,10 @@ public class ApplicationController {
         person.setLastname("MA");
         return repository.insert(person);
     }
-    @GetMapping("/spring-insert-movie")
-    public Movie springInsertMovie() {
-        Movie movie = new Movie();
-        movie.setPlot("Plot");
-        movie.setTitle("Title");
-        movie.setStartAt(LocalDateTime.now());
-        return movieRepository.insert(movie);
-    }
 
     @GetMapping("/spring-find-all")
     public List<Person> springFindAll() {
         return repository.findAll();
-    }
-    @GetMapping("/spring-find-all-movie")
-    public List<Movie> springFindAllMovie() {
-        return movieRepository.findAll();
     }
 
     @GetMapping("/find-all")
@@ -181,4 +157,44 @@ public class ApplicationController {
         return result.first();
     }
     
+
+
+
+
+    @GetMapping("/insert-movie")
+    public InsertOneResult insertMovie() {
+        MongoDatabase database = mongoClient.getDatabase(databaseName).withCodecRegistry(pojoCodecRegistry);
+        MongoCollection<Movie> collection = database.getCollection("movie", Movie.class);
+        Movie movie = new Movie();
+        //movie.setId(new ObjectId());
+        movie.setPlot("Plot");
+        movie.setTitle("Title");
+        movie.setStartAt(LocalDateTime.now());
+        movie.setEndAt(new Date());
+
+        return collection.insertOne(movie);
+    }
+    @GetMapping("/spring-insert-movie")
+    public Movie springInsertMovie() {
+        Movie movie = new Movie();
+        movie.setPlot("Plot");
+        movie.setTitle("Title");
+        movie.setStartAt(LocalDateTime.now());
+        movie.setEndAt(new Date());
+        return movieRepository.insert(movie);
+    }
+    @GetMapping("/spring-find-all-movie")
+    public List<Movie> springFindAllMovie() {
+        return movieRepository.findAll();
+    }
+    @GetMapping("/find-all-movie")
+    public List<Movie> findAllMovie() {
+        MongoDatabase database = mongoClient.getDatabase(databaseName).withCodecRegistry(pojoCodecRegistry);
+        MongoCollection<Movie> collection = database.getCollection("movie", Movie.class);
+        List<Movie> movies = new ArrayList<>();
+        collection.find().forEach((p) -> {
+            movies.add(p);
+        });
+        return movies;
+    }
 }

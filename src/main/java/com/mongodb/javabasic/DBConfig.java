@@ -6,7 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.convert.MongoCustomConversions;
 
+import com.mongodb.javabasic.converter.DateToStringConverter;
 import com.mongodb.javabasic.converter.LocalDateTimeToStringConverter;
+import com.mongodb.javabasic.converter.StringToDateConverter;
 import com.mongodb.javabasic.converter.StringToLocalDateTimeConverter;
 
 
@@ -17,7 +19,9 @@ public class DBConfig {
   
       return new MongoCustomConversions(
           Arrays.asList(
-              new StringToLocalDateTimeConverter(),
-              new LocalDateTimeToStringConverter()));
+            new StringToDateConverter(),
+            new DateToStringConverter(),
+            new StringToLocalDateTimeConverter(),
+            new LocalDateTimeToStringConverter()));
     }
 }
