@@ -10,6 +10,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.retry.annotation.EnableRetry;
 
 import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
@@ -17,6 +18,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.javabasic.codec.DateAsStringCodec;
 
 @Configuration
+@EnableRetry
 public class AppConfig {
     @Value("${spring.data.mongodb.uri}")
     private String uri;
