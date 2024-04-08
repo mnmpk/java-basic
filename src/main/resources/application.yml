@@ -15,3 +15,7 @@ logging:
           mongodb:
             core:
               MongoTemplate: DEBUG
+jwt:
+  secret: sSjVnDloGP3NnL5GVCFn5xLzhWm0IGcC
+  token:
+    validity: 86400000

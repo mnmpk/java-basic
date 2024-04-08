@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://unpkg.com/realm-web/dist/bundle.iife.js"></script>
+    <script>
+        const app = new Realm.App({ id: "devicesync-cxmya" });
+        async function login(jwt) {
+            try {
+                console.log(app.currentUser);
+                if (!app.currentUser) {
+                    const credentials = Realm.Credentials.jwt(jwt);
+                    const user = await app.logIn(credentials);
+                    console.log(user, app.currentUser);
+                    console.assert(user.id === app.currentUser.id);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        $(document).ready(function () {
+            login("eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiYXVkIjoiZGV2aWNlc3luYy1jeG15YSIsImd1aWQiOiJtci0yMDIzLTAxLTAxLWlQeUJMVFdhc3pPRTlKdDdlNno4R2tzdDRKYnllZVJyc3JaTExMVmVzdTZwMXFCQjRUSVBBY05sSDN4SWIzdWFsREtJdy1XLUlJIiwidWlkIjoibWlkbGFuZC1UamkzUHV5UVhhTkdFRHhaWUhaSkRIQlJOVEcyVHhWSWF2dlNFTUNqenY4NkJhT0NyYjF6RVV2dCIsImlhdCI6MTcxMjU2NzIwOSwiaXNzIjoiZGF0YS11YXQubWlkbGFuZC5jb20uaGsiLCJleHAiOjE3MTI2NTM2MDl9.owDm57W4cgi-BPHGyuXpEDmIzApVxa5vHVQU1fz8Q5c");
+        });    
+    </script>
+
+</body>
+
+</html>

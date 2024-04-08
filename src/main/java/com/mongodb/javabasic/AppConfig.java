@@ -27,7 +27,7 @@ public class AppConfig {
     public MongoClient mongoClient() {
         return MongoClients.create(uri);
         /*return MongoClients.create(
-    MongoClientSettings.builder().applyConnectionString(new ConnectionString(uri))
+    MongoClientSettings.builder().codecRegistry(pojoCodecRegistry().applyConnectionString(new ConnectionString(uri))
     .applyToConnectionPoolSettings(builder ->
         builder.maxWaitTime(10, SECONDS)
         .maxSize(200).build()));*/

@@ -124,6 +124,7 @@ public class ApplicationController {
         Person person = new Person();
         person.setFirstname("M");
         person.setLastname("MA");
+        person.setLocation(new GeoJsonPoint(123.2,22.3));
         return repository.insert(person);
     }
 

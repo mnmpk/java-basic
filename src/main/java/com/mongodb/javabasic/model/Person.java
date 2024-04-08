@@ -1,6 +1,7 @@
 package com.mongodb.javabasic.model;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.mongodb.core.geo.GeoJson;
 
 //import org.springframework.data.annotation.Id;
 
@@ -12,5 +13,5 @@ public class Person {
     private ObjectId id;
     private String firstname;
     private String lastname;
-
+    private GeoJson<?> location;
 }
