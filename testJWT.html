@@ -14,7 +14,7 @@
         const app = new Realm.App({ id: "devicesync-cxmya" });
         async function login(jwt) {
             try {
-                console.log(app.currentUser);
+                console.log(app.currentUser._profile.data);
                 if (!app.currentUser) {
                     const credentials = Realm.Credentials.jwt(jwt);
                     const user = await app.logIn(credentials);
