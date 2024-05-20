@@ -14,6 +14,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -124,7 +125,7 @@ public class ApplicationController {
         Person person = new Person();
         person.setFirstname("M");
         person.setLastname("MA");
-        person.setLocation(new GeoJsonPoint(123.2,22.3));
+        person.setLocation(new GeoJsonPoint(123.2, 22.3));
         return repository.insert(person);
     }
 
