@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.bson.Document;
 import org.bson.codecs.configuration.CodecProvider;
@@ -14,17 +15,31 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.data.mongodb.core.BulkOperations;
+import org.springframework.data.mongodb.core.FindAndReplaceOptions;
+import org.springframework.data.mongodb.core.BulkOperations.BulkMode;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mongodb.MongoClientSettings;
+import com.mongodb.bulk.BulkWriteResult;
 import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.ReplaceOneModel;
+import com.mongodb.client.model.ReplaceOptions;
+import com.mongodb.client.model.UpdateOneModel;
+import com.mongodb.client.model.UpdateOptions;
+import com.mongodb.client.model.Updates;
+import com.mongodb.client.model.WriteModel;
 import com.mongodb.client.result.InsertOneResult;
 import com.mongodb.javabasic.model.Movie;
 import com.mongodb.javabasic.model.Person;
@@ -48,6 +63,8 @@ public class ApplicationController {
 
     @Autowired
     private MongoClient mongoClient;
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     @Autowired
     private CodecRegistry pojoCodecRegistry;
@@ -96,13 +113,12 @@ public class ApplicationController {
         MongoDatabase database = mongoClient.getDatabase(databaseName).withCodecRegistry(pojoCodecRegistry);
         MongoCollection<Person> collection = database.getCollection("person", Person.class);
         Person person = new Person();
-        //person.setId("test");
+        // person.setId("test");
         person.setFirstname("M");
         person.setLastname("MA");
 
         return collection.insertOne(person);
     }
-
 
     @GetMapping("/spring-create-client")
     public Document springCreateClient() {
@@ -150,25 +166,21 @@ public class ApplicationController {
         repository.deleteAll();
     }
 
-
     @GetMapping("/test-agg")
     public Person testAgg() {
         MongoDatabase database = mongoClient.getDatabase(databaseName).withCodecRegistry(pojoCodecRegistry);
         MongoCollection<Person> collection = database.getCollection("person", Person.class);
-        AggregateIterable<Person> result = collection.aggregate(Arrays.asList(new Document("$match", new Document("firstname", "M"))));
+        AggregateIterable<Person> result = collection
+                .aggregate(Arrays.asList(new Document("$match", new Document("firstname", "M"))));
         return result.first();
     }
-    
-
-
-
 
     @GetMapping("/insert-movie")
     public InsertOneResult insertMovie() {
         MongoDatabase database = mongoClient.getDatabase(databaseName).withCodecRegistry(pojoCodecRegistry);
         MongoCollection<Movie> collection = database.getCollection("movie", Movie.class);
         Movie movie = new Movie();
-        //movie.setId(new ObjectId());
+        // movie.setId(new ObjectId());
         movie.setPlot("Plot");
         movie.setTitle("Title");
         movie.setStartAt(LocalDateTime.now());
@@ -176,6 +188,7 @@ public class ApplicationController {
 
         return collection.insertOne(movie);
     }
+
     @GetMapping("/spring-insert-movie")
     public Movie springInsertMovie() {
         Movie movie = new Movie();
@@ -185,10 +198,12 @@ public class ApplicationController {
         movie.setEndAt(new Date());
         return movieRepository.insert(movie);
     }
+
     @GetMapping("/spring-find-all-movie")
     public List<Movie> springFindAllMovie() {
         return movieRepository.findAll();
     }
+
     @GetMapping("/find-all-movie")
     public List<Movie> findAllMovie() {
         MongoDatabase database = mongoClient.getDatabase(databaseName).withCodecRegistry(pojoCodecRegistry);
@@ -198,5 +213,41 @@ public class ApplicationController {
             movies.add(p);
         });
         return movies;
+    }
+
+
+    String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    @GetMapping("/bulk-upsert-person")
+    public BulkWriteResult bulkUpdatePerson() {
+
+        MongoDatabase database = mongoClient.getDatabase(databaseName).withCodecRegistry(pojoCodecRegistry);
+        MongoCollection<Person> collection = database.getCollection("person", Person.class);
+        List<WriteModel<Person>> operations = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            Person person = new Person();
+            person.setFirstname(String.valueOf(alphabet.charAt(new Random().nextInt(alphabet.length()))));
+            person.setLastname("MA");
+            //operations.add(
+            //        new ReplaceOneModel<Person>(Filters.eq("pId", i + 1), person, new ReplaceOptions().upsert(true)));
+            operations.add(new UpdateOneModel<>(Filters.eq("pId", i + 1),
+                    Updates.combine(Updates.set("firstname", person.getFirstname()),Updates.set("lastname", person.getLastname())),
+                    new UpdateOptions().upsert(true)));
+        }
+        return collection.bulkWrite(operations);
+    }
+
+    @GetMapping("/spring-bulk-upsert-person")
+    public BulkWriteResult springBulkUpdatePerson() {
+        BulkOperations bulkOps = mongoTemplate.bulkOps(BulkMode.UNORDERED, Person.class);
+        for (int i = 0; i < 100; i++) {
+            Person person = new Person();
+            person.setFirstname(String.valueOf(alphabet.charAt(new Random().nextInt(alphabet.length()))));
+            person.setLastname("MA");
+            Query query = new Query().addCriteria(new Criteria("pId").is(i + 1));
+            //bulkOps.replaceOne(query, person, FindAndReplaceOptions.options().upsert());
+            Update update = new Update().set("firstname", person.getFirstname()).set("lastname", person.getLastname());
+            bulkOps.upsert(query, update);
+        }
+        return bulkOps.execute();
     }
 }

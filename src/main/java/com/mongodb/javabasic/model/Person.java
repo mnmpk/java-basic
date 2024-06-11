@@ -11,6 +11,7 @@ import lombok.Data;
 public class Person {
     //@Id
     private ObjectId id;
+    private int pId;
     private String firstname;
     private String lastname;
     private GeoJson<?> location;
