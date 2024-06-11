@@ -43,7 +43,9 @@ import com.mongodb.client.model.WriteModel;
 import com.mongodb.client.result.InsertOneResult;
 import com.mongodb.javabasic.model.Movie;
 import com.mongodb.javabasic.model.Person;
+import com.mongodb.javabasic.model.Person2;
 import com.mongodb.javabasic.repositories.MovieRepository;
+import com.mongodb.javabasic.repositories.Person2Repository;
 import com.mongodb.javabasic.repositories.PersonRepository;
 
 @RestController
@@ -71,6 +73,8 @@ public class ApplicationController {
 
     @Autowired
     PersonRepository repository;
+    @Autowired
+    Person2Repository person2Repository;
     @Autowired
     MovieRepository movieRepository;
     @Autowired
@@ -221,15 +225,16 @@ public class ApplicationController {
     public BulkWriteResult bulkUpdatePerson() {
 
         MongoDatabase database = mongoClient.getDatabase(databaseName).withCodecRegistry(pojoCodecRegistry);
-        MongoCollection<Person> collection = database.getCollection("person", Person.class);
-        List<WriteModel<Person>> operations = new ArrayList<>();
+        MongoCollection<Person2> collection = database.getCollection("person", Person2.class);
+        List<WriteModel<Person2>> operations = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
-            Person person = new Person();
+            Person2 person = new Person2();
+            person.setId(i+1);
             person.setFirstname(String.valueOf(alphabet.charAt(new Random().nextInt(alphabet.length()))));
             person.setLastname("MA");
             //operations.add(
-            //        new ReplaceOneModel<Person>(Filters.eq("pId", i + 1), person, new ReplaceOptions().upsert(true)));
-            operations.add(new UpdateOneModel<>(Filters.eq("pId", i + 1),
+            //        new ReplaceOneModel<Person>(Filters.eq("pId", person.getId()), person, new ReplaceOptions().upsert(true)));
+            operations.add(new UpdateOneModel<>(Filters.eq("_id",person.getId()),
                     Updates.combine(Updates.set("firstname", person.getFirstname()),Updates.set("lastname", person.getLastname())),
                     new UpdateOptions().upsert(true)));
         }
@@ -238,16 +243,29 @@ public class ApplicationController {
 
     @GetMapping("/spring-bulk-upsert-person")
     public BulkWriteResult springBulkUpdatePerson() {
-        BulkOperations bulkOps = mongoTemplate.bulkOps(BulkMode.UNORDERED, Person.class);
+        BulkOperations bulkOps = mongoTemplate.bulkOps(BulkMode.UNORDERED, Person2.class);
         for (int i = 0; i < 100; i++) {
-            Person person = new Person();
+            Person2 person = new Person2();
+            person.setId(i+1);
             person.setFirstname(String.valueOf(alphabet.charAt(new Random().nextInt(alphabet.length()))));
             person.setLastname("MA");
-            Query query = new Query().addCriteria(new Criteria("pId").is(i + 1));
+            Query query = new Query().addCriteria(new Criteria("_id").is(person.getId()));
             //bulkOps.replaceOne(query, person, FindAndReplaceOptions.options().upsert());
             Update update = new Update().set("firstname", person.getFirstname()).set("lastname", person.getLastname());
             bulkOps.upsert(query, update);
         }
         return bulkOps.execute();
+    }
+    @GetMapping("/save-all")
+    public List<Person2> saveAll() {
+        List<Person2> persons = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            Person2 person = new Person2();
+            person.setId(i+1);
+            person.setFirstname(String.valueOf(alphabet.charAt(new Random().nextInt(alphabet.length()))));
+            person.setLastname("MA");
+            persons.add(person);
+        }
+        return person2Repository.saveAll(persons);
     }
 }
