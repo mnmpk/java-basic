@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 import org.bson.Document;
+import org.bson.codecs.DecoderContext;
 import org.bson.codecs.configuration.CodecProvider;
 import org.bson.codecs.configuration.CodecRegistries;
 import org.bson.codecs.configuration.CodecRegistry;
@@ -18,6 +19,7 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.data.mongodb.core.BulkOperations;
 import org.springframework.data.mongodb.core.FindAndReplaceOptions;
 import org.springframework.data.mongodb.core.BulkOperations.BulkMode;
+import org.springframework.data.mongodb.core.convert.MongoConverter;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -79,6 +81,8 @@ public class ApplicationController {
     MovieRepository movieRepository;
     @Autowired
     ConversionService conversionService;
+    @Autowired
+    MongoConverter mongoConverter;
 
     @GetMapping("/self-create-client")
     public Document selfCreateClient() {
@@ -178,6 +182,18 @@ public class ApplicationController {
                 .aggregate(Arrays.asList(new Document("$match", new Document("firstname", "M"))));
         return result.first();
     }
+
+    @GetMapping("/test-codec-convert")
+    public Person testCodecConvert() {
+        return pojoCodecRegistry.get(Person.class).decode(new Document("firstname","M").toBsonDocument().asBsonReader(), DecoderContext.builder().build());
+    }
+    @GetMapping("/test-spring-convert")
+    public Person testSpringConvert() {
+        //mongoTemplate.getConverter();
+        return mongoConverter.read(Person.class, new Document("firstname","M"));
+    }
+    //mongoConverter.getConversionService();
+    //return conversionService.convert(new Document("firstname","M"), Person.class);
 
     @GetMapping("/insert-movie")
     public InsertOneResult insertMovie() {
